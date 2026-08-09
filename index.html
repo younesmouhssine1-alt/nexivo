@@ -82,7 +82,7 @@
 <section id="waitlist">
   <div class="wait">
     <div><div class="eyebrow">Early access</div><h2>Be ready<br>on day one.</h2><p style="color:#9aa1ad;max-width:560px">Join the early community building the ultimate GTA VI companion.</p></div>
-    <div><form class="form" action="https://formspree.io/f/meajaopq" method="POST"><input type="email" name="email" placeholder="Your email" required><button type="submit" class="btn accent">Join the waitlist</button></form></div>
+    <div><form class="form" onsubmit="event.preventDefault();const email=this.email.value.trim();fetch('https://fsjkrpsitukyegvhuag.supabase.co/rest/v1/waitlist',{method:'POST',headers:{'Content-Type':'application/json','apikey':'sb_publishable_2r1MwycYAfDk_xah0Lv6rg_WqDlgHrg','Prefer':'return=minimal'},body:JSON.stringify({email})}).then(async r=>{if(!r.ok)throw new Error(await r.text());this.reset();alert('You are on the NEXIVO waitlist!');}).catch(()=>alert('Something went wrong. Please try again.'));"><input type="email" name="email" placeholder="Your email" required><button class="btn accent" type="submit">Join waitlist</button></form></div>
   </div>
 </section>
 
