@@ -1,92 +1,2543 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NEXIVO — Your game. Your advantage.</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXIVO — GTA VI Companion</title>
+<meta name="description" content="NEXIVO — Explore. Ask. Master.">
+
 <style>
-  :root { --bg:#08090b; --panel:#101216; --text:#f5f7fa; --muted:#9aa1ad; --line:#20242b; --accent:#b8ff4a; }
-  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-  a{text-decoration:none;color:inherit}.wrap{max-width:1180px;margin:auto;padding:0 28px}
-  nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
-  .logo{font-weight:900;letter-spacing:-.06em;font-size:25px}.navlinks{display:flex;gap:28px;color:var(--muted);font-size:14px}
-  .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 20px;font-weight:800;font-size:14px;border:1px solid var(--line);background:#fff;color:#090a0c}
-  .btn.accent{background:var(--accent);border-color:var(--accent)}
-  .hero{padding:105px 0 90px;max-width:900px}.eyebrow{color:var(--accent);font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
-  h1{font-size:clamp(56px,8vw,104px);line-height:.92;letter-spacing:-.075em;margin:20px 0 28px;max-width:950px}
-  .hero p{font-size:21px;line-height:1.5;color:var(--muted);max-width:650px}.actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
-  .note{color:#686f7a;font-size:12px;margin-top:16px}
-  section{padding:82px 0;border-top:1px solid var(--line)} h2{font-size:clamp(36px,5vw,62px);line-height:1;letter-spacing:-.06em;margin:0 0 42px}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:28px;min-height:220px}
-  .icon{font-size:26px}.card h3{font-size:23px;margin:34px 0 10px}.card p{color:var(--muted);line-height:1.55;margin:0}
-  .map{height:480px;border-radius:28px;border:1px solid var(--line);background:
-    radial-gradient(circle at 25% 30%,#263018 0 2px,transparent 3px),
-    radial-gradient(circle at 72% 62%,#263018 0 2px,transparent 3px),
-    linear-gradient(135deg,#11150f,#0c0e10 48%,#12160f);
-    position:relative;overflow:hidden}
-  .map:before{content:"";position:absolute;inset:-30%;background:repeating-linear-gradient(28deg,transparent 0 48px,#1d241a 49px 51px),repeating-linear-gradient(-20deg,transparent 0 72px,#171d16 73px 75px);opacity:.65}
-  .maplabel{position:absolute;left:30px;top:28px;font-size:13px;color:#b9c0c8;background:#0b0d0fcc;border:1px solid #272c33;padding:10px 13px;border-radius:999px}
-  .stats{position:absolute;right:24px;bottom:24px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.stat{background:#0b0d0ee8;border:1px solid #292e35;border-radius:14px;padding:12px 14px}.stat b{display:block;font-size:17px}.stat span{color:var(--muted);font-size:11px}
-  .ai{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}.chat,.profile{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:24px}.bubble{border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;line-height:1.5}.bubble.user{background:#16191f}.bubble.ai{background:#11160c;border-color:#29351d}
-  .progress{height:10px;background:#20242b;border-radius:999px;overflow:hidden;margin:16px 0}.progress span{display:block;height:100%;width:38%;background:var(--accent)}
-  .profilegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.metric{padding:15px;background:#0b0d10;border-radius:14px}.metric b{display:block;font-size:22px}.metric span{font-size:12px;color:var(--muted)}
-  .wait{display:grid;grid-template-columns:1fr .8fr;gap:30px;align-items:end}.form{display:flex;gap:10px}.form input{flex:1;min-width:0;background:#0c0e11;border:1px solid var(--line);border-radius:999px;padding:14px 18px;color:#fff}
-  footer{padding:35px 0;color:var(--muted);display:flex;justify-content:space-between;font-size:13px}
-  @media(max-width:800px){.navlinks{display:none}.grid,.ai,.wait{grid-template-columns:1fr}.map{height:360px}.hero{padding-top:75px}.form{flex-direction:column}.btn{width:100%}}
+:root{
+--p:#ff239f;
+--c:#39b9ff;
+--v:#9d6cff;
+--bg:#030207;
+--card:#090611;
+--muted:#aaa1b2;
+--line:#ff239f55
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+background:var(--bg);
+color:#fff;
+font-family:Arial,Helvetica,sans-serif;
+overflow-x:hidden
+}
+
+body:before{
+content:"";
+position:fixed;
+inset:0;
+z-index:90;
+pointer-events:none;
+opacity:.05;
+background:repeating-linear-gradient(
+0deg,
+transparent 0 3px,
+#fff 4px
+)
+}
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+button,input{
+font:inherit
+}
+
+.wrap{
+width:min(1210px,calc(100% - 44px));
+margin:auto
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.top{
+position:fixed;
+z-index:50;
+top:16px;
+left:50%;
+transform:translateX(-50%);
+width:min(1210px,calc(100% - 30px));
+height:64px;
+border:1px solid #fff2;
+border-radius:18px;
+background:#07050bdd;
+backdrop-filter:blur(20px);
+display:flex;
+align-items:center;
+padding:0 12px 0 24px;
+box-shadow:0 18px 70px #0009
+}
+
+.logo{
+font-size:24px;
+font-weight:1000;
+letter-spacing:.2em;
+margin-right:auto
+}
+
+.logo i{
+font-style:normal;
+color:var(--p)
+}
+
+.links{
+display:flex;
+gap:25px;
+margin-right:18px
+}
+
+.links a{
+font-size:10px;
+font-weight:900;
+letter-spacing:.13em;
+color:#d8d2dc
+}
+
+.links a:hover{
+color:#fff;
+text-shadow:0 0 15px var(--p)
+}
+
+.lang{
+position:relative
+}
+
+.lang-main{
+height:40px;
+border:1px solid #fff2;
+background:#fff1;
+color:#fff;
+border-radius:11px;
+padding:0 14px;
+font-size:11px;
+font-weight:900;
+cursor:pointer
+}
+
+.menu{
+display:none;
+position:absolute;
+right:0;
+top:47px;
+width:160px;
+background:#09070eef;
+border:1px solid #fff2;
+border-radius:12px;
+padding:7px;
+box-shadow:0 20px 60px #000;
+backdrop-filter:blur(18px)
+}
+
+.menu.open{
+display:block
+}
+
+.menu button{
+display:block;
+width:100%;
+border:0;
+background:transparent;
+color:#eee;
+text-align:left;
+padding:10px;
+border-radius:8px;
+font-size:11px;
+cursor:pointer
+}
+
+.menu button:hover{
+background:#ff239f18
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+border:1px solid var(--p);
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:14px 20px;
+border-radius:11px;
+background:var(--p);
+color:#10030b;
+font-size:11px;
+font-weight:1000;
+box-shadow:0 0 30px #ff239f55;
+transition:.25s;
+cursor:pointer
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 0 45px #ff239f99
+}
+
+.ghost{
+background:#08060ccc;
+color:#fff;
+border-color:#fff3;
+box-shadow:none
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+min-height:930px;
+position:relative;
+display:flex;
+align-items:center;
+overflow:hidden;
+background:
+linear-gradient(
+180deg,
+#15071a,
+#c43b67 34%,
+#ff7854 42%,
+#130a18 63%,
+#030207
+)
+}
+
+.sky{
+position:absolute;
+inset:0;
+background:
+radial-gradient(
+circle at 70% 35%,
+#ff4c8e99,
+transparent 28%
+),
+linear-gradient(
+180deg,
+transparent 35%,
+#030207 82%
+)
+}
+
+.city{
+position:absolute;
+inset:auto 0 21% 0;
+height:42%;
+background:
+linear-gradient(
+90deg,
+#07050c 0 5%,
+transparent 5% 9%,
+#0b0811 9% 13%,
+transparent 13% 17%,
+#08070e 17% 23%,
+transparent 23% 28%,
+#0a0810 28% 34%,
+transparent 34% 40%,
+#08070e 40% 47%,
+transparent 47% 52%,
+#0b0810 52% 58%,
+transparent 58% 64%,
+#09070f 64% 70%,
+transparent 70% 77%,
+#0a080f 77% 83%,
+transparent 83% 88%,
+#08070e 88% 95%,
+transparent 95%
+);
+box-shadow:inset 0 -80px 100px #ff239f18
+}
+
+.city:after{
+content:"";
+position:absolute;
+inset:12% 0 0;
+background:
+repeating-linear-gradient(
+90deg,
+transparent 0 25px,
+#ffbd63 26px 28px,
+transparent 29px 62px
+);
+opacity:.25
+}
+
+.water{
+position:absolute;
+inset:auto 0 0;
+height:34%;
+background:
+repeating-linear-gradient(
+170deg,
+#ff239f1f 0 2px,
+transparent 3px 16px
+),
+linear-gradient(
+180deg,
+transparent,
+#030207 75%
+);
+animation:water 8s linear infinite
+}
+
+.sign{
+position:absolute;
+right:5%;
+top:31%;
+font-size:clamp(22px,4vw,54px);
+font-weight:1000;
+line-height:.82;
+text-align:center;
+color:#fff;
+text-shadow:
+0 0 8px #fff,
+0 0 25px var(--p),
+0 0 55px var(--p);
+animation:flicker 5s infinite
+}
+
+/* =========================
+   CAR
+========================= */
+
+.car{
+position:absolute;
+right:5%;
+bottom:15%;
+width:min(570px,48vw);
+height:190px;
+filter:drop-shadow(0 15px 30px #000);
+animation:float 5s ease-in-out infinite
+}
+
+.body{
+position:absolute;
+left:8%;
+right:2%;
+bottom:25px;
+height:105px;
+background:
+linear-gradient(
+170deg,
+#35122d,
+#0b0810 48%,
+#2a1024
+);
+border:2px solid #ff239f99;
+border-radius:45% 18% 12% 12%;
+transform:skewX(-5deg);
+box-shadow:inset 0 0 35px #ff239f22
+}
+
+.roof{
+position:absolute;
+left:28%;
+top:20px;
+width:48%;
+height:70px;
+border:2px solid #ff239f88;
+border-bottom:0;
+border-radius:70% 70% 0 0;
+transform:skewX(-8deg);
+background:#211021
+}
+
+.glass{
+position:absolute;
+left:32%;
+top:27px;
+width:40%;
+height:48px;
+background:
+linear-gradient(
+135deg,
+#0b0a13,
+#4d1747
+);
+border:1px solid #fff2;
+transform:skewX(-8deg)
+}
+
+.wheel{
+position:absolute;
+bottom:5px;
+width:70px;
+height:70px;
+background:#020206;
+border:9px solid #19141e;
+border-radius:50%;
+box-shadow:
+inset 0 0 0 4px #ff239f44
+}
+
+.w1{left:20%}
+.w2{right:10%}
+
+.light{
+position:absolute;
+right:5%;
+bottom:77px;
+width:120px;
+height:18px;
+background:#ff2635;
+border-radius:12px;
+box-shadow:
+0 0 12px #ff2433,
+0 0 45px #ff2433
+}
+
+.plate{
+position:absolute;
+right:18%;
+bottom:55px;
+padding:7px 13px;
+background:#e8e2d0;
+color:#19151a;
+font-size:9px;
+font-weight:900
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero>.wrap{
+position:relative;
+z-index:4
+}
+
+.eyebrow{
+font-size:12px;
+font-weight:1000;
+letter-spacing:.24em;
+margin-bottom:20px
+}
+
+h1{
+font-size:clamp(72px,9.4vw,140px);
+line-height:.78;
+letter-spacing:-.065em;
+margin:0;
+text-shadow:0 12px 35px #000;
+font-weight:1000
+}
+
+h1 span{
+color:var(--p);
+text-shadow:0 0 35px #ff239f66
+}
+
+.lead{
+max-width:570px;
+font-size:18px;
+line-height:1.55;
+color:#eee;
+margin:27px 0
+}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap
+}
+
+.scroll{
+position:absolute;
+z-index:4;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+font-size:9px;
+letter-spacing:.28em;
+color:#bbb;
+text-align:center
+}
+
+.scroll i{
+display:block;
+width:1px;
+height:30px;
+background:
+linear-gradient(
+var(--p),
+transparent
+);
+margin:8px auto;
+animation:scroll 1.5s infinite
+}
+
+/* =========================
+   FEATURE BAR
+========================= */
+
+.features{
+position:relative;
+z-index:5;
+margin-top:-10px
+}
+
+.featurebar{
+width:min(1210px,calc(100% - 44px));
+margin:auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+border:1px solid #ff239f55;
+border-radius:17px;
+background:#07050dde;
+backdrop-filter:blur(16px);
+overflow:hidden
+}
+
+.feature{
+padding:23px;
+border-right:1px solid #fff2
+}
+
+.feature:last-child{
+border:0
+}
+
+.ico{
+font-size:29px;
+color:var(--p);
+text-shadow:0 0 18px var(--p)
+}
+
+.feature b{
+display:block;
+color:var(--p);
+font-size:10px;
+letter-spacing:.12em;
+margin:8px 0
+}
+
+.feature p{
+margin:0;
+color:#bbb2be;
+font-size:11px;
+line-height:1.5
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+padding:105px 0
+}
+
+.kicker{
+color:var(--p);
+font-size:10px;
+font-weight:1000;
+letter-spacing:.22em
+}
+
+.title{
+font-size:clamp(43px,6vw,76px);
+line-height:.9;
+letter-spacing:-.055em;
+margin:9px 0 14px
+}
+
+.text{
+max-width:650px;
+color:var(--muted);
+line-height:1.65
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+margin-top:35px
+}
+
+.panel{
+min-height:440px;
+border:1px solid #fff2;
+border-radius:17px;
+background:
+linear-gradient(
+145deg,
+#100914,
+#050308
+);
+position:relative;
+overflow:hidden;
+padding:25px;
+transition:.35s
+}
+
+.panel:hover{
+transform:translateY(-7px);
+border-color:#ff239f77;
+box-shadow:0 25px 80px #ff239f18
+}
+
+.panel h3{
+font-size:32px;
+margin:16px 0 4px
+}
+
+.sub{
+color:var(--p);
+font-size:10px;
+font-weight:1000;
+letter-spacing:.14em
+}
+
+.panel p{
+color:#b9b0bd;
+line-height:1.55;
+font-size:13px
+}
+
+.art{
+position:absolute;
+inset:145px 15px 15px;
+border:1px solid #fff1;
+border-radius:12px;
+overflow:hidden
+}
+
+/* =========================
+   MAP
+========================= */
+
+.map{
+background:#07111b
+}
+
+.gridmap{
+position:absolute;
+inset:-20%;
+background:
+linear-gradient(
+90deg,
+#39b9ff14 1px,
+transparent 1px
+),
+linear-gradient(
+#39b9ff14 1px,
+transparent 1px
+);
+background-size:24px 24px;
+transform:rotate(-7deg)
+}
+
+.island{
+position:absolute;
+left:28%;
+top:10%;
+width:45%;
+height:80%;
+background:#132a33;
+clip-path:polygon(
+30% 0,
+70% 8%,
+92% 31%,
+78% 55%,
+88% 78%,
+58% 100%,
+25% 84%,
+5% 57%,
+18% 34%
+)
+}
+
+.pin{
+position:absolute;
+width:15px;
+height:15px;
+border-radius:50%;
+background:var(--p);
+box-shadow:
+0 0 0 5px #ff239f22,
+0 0 22px var(--p);
+animation:pin 2s infinite
+}
+
+.p1{left:44%;top:25%}
+.p2{left:62%;top:44%}
+.p3{left:34%;top:58%}
+.p4{left:58%;top:71%}
+
+/* =========================
+   ASK PANEL
+========================= */
+
+.chat{
+padding:18px;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+background:
+radial-gradient(
+circle at 50% 0,
+#10142b,
+#050308
+)
+}
+
+.bubble{
+max-width:82%;
+padding:11px 13px;
+border-radius:12px;
+font-size:10px;
+line-height:1.4;
+margin-top:9px
+}
+
+.q{
+align-self:flex-end;
+background:#26134a;
+border:1px solid #8d54ff66
+}
+
+.a{
+align-self:flex-start;
+background:#101a2c;
+border:1px solid #39b9ff44
+}
+
+.typing{
+color:#39b9ff;
+letter-spacing:.25em;
+animation:blink 1s infinite
+}
+
+/* =========================
+   MASTER
+========================= */
+
+.masterart{
+background:
+radial-gradient(
+circle at 70% 25%,
+#43204b,
+#07050d 65%
+)
+}
+
+.sil{
+position:absolute;
+right:13%;
+bottom:3%;
+font-size:160px;
+opacity:.7;
+filter:drop-shadow(0 0 20px #ff239f55)
+}
+
+.prog{
+position:absolute;
+left:9%;
+right:9%;
+bottom:12%;
+height:7px;
+background:#201a25;
+border-radius:20px;
+overflow:hidden
+}
+
+.prog i{
+display:block;
+height:100%;
+width:72%;
+background:
+linear-gradient(
+90deg,
+var(--p),
+var(--v)
+);
+box-shadow:0 0 15px var(--p);
+animation:progress 2s
+}
+
+/* =========================
+   WEAPONS
+========================= */
+
+.weapons{
+border:1px solid #ff239f55;
+border-radius:18px;
+padding:30px;
+background:
+radial-gradient(
+circle at 80% 0,
+#2a0d2b,
+#08050d 60%
+)
+}
+
+.tabs{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin:24px 0
+}
+
+.tab{
+border:1px solid #fff2;
+background:#0a0710;
+color:#aaa;
+padding:9px 13px;
+border-radius:9px;
+font-size:10px;
+font-weight:900;
+cursor:pointer
+}
+
+.tab.active{
+color:#fff;
+border-color:var(--p);
+box-shadow:0 0 20px #ff239f22
+}
+
+.weaponstage{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+align-items:center
+}
+
+.gunbox{
+height:290px;
+border:1px solid #fff1;
+border-radius:15px;
+background:
+radial-gradient(
+circle,
+#281028,
+#07050c 65%
+);
+display:flex;
+align-items:center;
+justify-content:center
+}
+
+.gunshape{
+position:relative;
+width:75%;
+height:45px;
+background:
+linear-gradient(
+#ddd6e2,
+#5d5664
+);
+border-radius:7px;
+transform:rotate(-8deg);
+box-shadow:0 0 25px #ff239f33
+}
+
+.gunshape:before{
+content:"";
+position:absolute;
+left:12%;
+top:-28px;
+width:55%;
+height:25px;
+background:#19151d;
+border-radius:8px
+}
+
+.gunshape:after{
+content:"";
+position:absolute;
+right:5%;
+bottom:-45px;
+width:23px;
+height:55px;
+background:#16121a;
+transform:skewX(-15deg);
+border-radius:0 0 6px 6px
+}
+
+.weaponname{
+font-size:40px;
+margin:4px 0
+}
+
+.stats{
+display:grid;
+gap:14px;
+margin-top:20px
+}
+
+.stat{
+display:grid;
+grid-template-columns:85px 1fr 35px;
+gap:10px;
+align-items:center;
+font-size:10px;
+font-weight:900
+}
+
+.meter{
+height:6px;
+background:#211a25;
+border-radius:10px;
+overflow:hidden
+}
+
+.meter i{
+display:block;
+height:100%;
+background:
+linear-gradient(
+90deg,
+var(--p),
+var(--v)
+);
+box-shadow:0 0 10px var(--p);
+transition:.5s
+}
+
+/* =========================
+   WAITLIST
+========================= */
+
+.access{
+border:1px solid #ff239f66;
+border-radius:18px;
+padding:40px;
+background:
+radial-gradient(
+circle at 0 50%,
+#ff239f16,
+transparent 42%
+),
+linear-gradient(
+120deg,
+#09060d,
+#120815
+)
+}
+
+.accessgrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:35px;
+align-items:center
+}
+
+.access h2{
+font-size:clamp(45px,6vw,75px);
+line-height:.85;
+margin:10px 0
+}
+
+.form{
+display:flex;
+gap:10px
+}
+
+.form input{
+flex:1;
+min-width:0;
+background:#050308;
+border:1px solid #fff2;
+border-radius:11px;
+padding:15px;
+color:#fff;
+outline:0
+}
+
+.form input:focus{
+border-color:var(--p)
+}
+
+.msg{
+min-height:20px;
+margin-top:12px;
+color:var(--p);
+font-size:11px;
+font-weight:900
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+padding:45px 0 60px;
+border-top:1px solid #fff1;
+color:#777;
+font-size:10px;
+display:flex;
+justify-content:space-between
+}
+
+.flogo{
+font-size:23px;
+color:#fff;
+font-weight:1000;
+letter-spacing:.15em
+}
+
+.flogo i{
+color:var(--p)
+}
+
+/* =========================
+   REVEAL ANIMATIONS
+========================= */
+
+.reveal{
+opacity:0;
+transform:translateY(30px);
+transition:.8s
+}
+
+.reveal.show{
+opacity:1;
+transform:none
+}
+
+/* =========================
+   KEYFRAMES
+========================= */
+
+@keyframes float{
+50%{
+transform:translateY(-7px)
+}
+}
+
+@keyframes water{
+to{
+background-position:0 100px
+}
+}
+
+@keyframes scroll{
+50%{
+transform:translateY(8px);
+opacity:.2
+}
+}
+
+@keyframes pin{
+50%{
+transform:scale(1.4);
+box-shadow:
+0 0 0 10px #ff239f11,
+0 0 28px var(--p)
+}
+}
+
+@keyframes progress{
+from{
+width:0
+}
+}
+
+@keyframes blink{
+50%{
+opacity:.2
+}
+}
+
+@keyframes flicker{
+0%,96%,100%{
+opacity:1
+}
+97%{
+opacity:.55
+}
+98%{
+opacity:1
+}
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+.links{
+display:none
+}
+
+.featurebar,
+.grid,
+.weaponstage,
+.accessgrid{
+grid-template-columns:1fr 1fr
+}
+
+.car{
+width:520px;
+right:-12%;
+opacity:.65
+}
+
+}
+
+@media(max-width:560px){
+
+.top{
+height:58px;
+padding-left:16px
+}
+
+.logo{
+font-size:19px
+}
+
+.top>.btn{
+padding:11px 9px
+}
+
+.hero{
+min-height:820px
+}
+
+.hero>.wrap{
+padding-top:55px
+}
+
+.lead{
+font-size:16px
+}
+
+.car{
+width:480px;
+right:-40%;
+opacity:.5
+}
+
+.featurebar,
+.grid,
+.weaponstage,
+.accessgrid{
+grid-template-columns:1fr
+}
+
+.feature{
+border-right:0;
+border-bottom:1px solid #fff1
+}
+
+.panel{
+min-height:380px
+}
+
+.form{
+display:grid
+}
+
+footer{
+display:block
+}
+
+.footer-right{
+margin-top:18px
+}
+
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
-<nav><div class="logo">NEXIVO</div><div class="navlinks"><a href="#features">Features</a><a href="#map">Map</a><a href="#ai">AI</a></div><a class="btn accent" href="#waitlist">Join the waitlist</a></nav>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="top">
+
+<a class="logo" href="#">
+NEXI<i>VO</i>
+</a>
+
+<div class="links">
+
+<a href="#explore" data-i="nav1">
+EXPLORER
+</a>
+
+<a href="#ask" data-i="nav2">
+DEMANDER
+</a>
+
+<a href="#master" data-i="nav3">
+MAÎTRISER
+</a>
+
+<a href="#about" data-i="nav4">
+À PROPOS
+</a>
+
+</div>
+
+<div class="lang">
+
+<button class="lang-main" id="langMain">
+FR ▾
+</button>
+
+<div class="menu" id="langMenu">
+
+<button data-lang="en">
+🇬🇧 EN · English
+</button>
+
+<button data-lang="fr">
+🇫🇷 FR · Français
+</button>
+
+<button data-lang="es">
+🇪🇸 ES · Español
+</button>
+
+<button data-lang="pt">
+🇵🇹 PT · Português
+</button>
+
+<button data-lang="de">
+🇩🇪 DE · Deutsch
+</button>
+
+<button data-lang="it">
+🇮🇹 IT · Italiano
+</button>
+
+</div>
+
+</div>
+
+<a class="btn" href="#access" data-i="join">
+REJOINDRE LA LISTE
+</a>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
 
 <header class="hero">
-  <div class="eyebrow">The GTA VI companion</div>
-  <h1>Master GTA VI before everyone else.</h1>
-  <p>Explore Vice City. Discover everything. Build your strategy. Track your progress.</p>
-  <div class="actions"><a class="btn accent" href="#waitlist">Join the waitlist</a><a class="btn" href="#map">Explore the concept</a></div>
-  <div class="note">Launching alongside GTA VI · November 19, 2026</div>
+
+<div class="sky"></div>
+
+<div class="city"></div>
+
+<div class="water"></div>
+
+<div class="sign">
+WELCOME<br>
+TO<br>
+VICE CITY
+</div>
+
+
+<div class="car">
+
+<div class="roof"></div>
+
+<div class="glass"></div>
+
+<div class="body"></div>
+
+<div class="light"></div>
+
+<div class="plate">
+VCE 2025
+</div>
+
+<div class="wheel w1"></div>
+
+<div class="wheel w2"></div>
+
+</div>
+
+
+<div class="wrap">
+
+<div class="eyebrow" data-i="eyebrow">
+LE COMPAGNON ULTIME DE GTA VI · VICE CITY & AU-DELÀ
+</div>
+
+<h1 data-html="hero">
+MAÎTRISE
+<br>
+<span>GTA VI.</span>
+</h1>
+
+<p class="lead" data-i="copy">
+Commence à Vice City. Explore au-delà.
+Découvre ce que les autres ratent,
+demande n’importe quoi et prends de l’avance.
+</p>
+
+<div class="actions">
+
+<a class="btn" href="#access" data-i="early">
+ACCÈS ANTICIPÉ →
+</a>
+
+<a class="btn ghost" href="#master" data-i="watch">
+VOIR LE TRAILER
+</a>
+
+</div>
+
+</div>
+
+
+<div class="scroll">
+VICE CITY IS WAITING
+<i></i>
+</div>
+
 </header>
 
-<section id="features">
-  <h2>One place.<br>Everything GTA VI.</h2>
-  <div class="grid">
-    <div class="card"><div class="icon">🗺️</div><h3>EXPLORE</h3><p>Discover Vice City through an interactive map built around the player's goals.</p></div>
-    <div class="card"><div class="icon">🤖</div><h3>ASK</h3><p>Ask NEXIVO what to do, where to go, and how to build your next strategy.</p></div>
-    <div class="card"><div class="icon">🏆</div><h3>MASTER</h3><p>Track discoveries, vehicles, missions, objectives and your personal progress.</p></div>
-  </div>
-</section>
 
-<section id="map">
-  <h2>Know Vice City.</h2>
-  <div class="map"><div class="maplabel">NEXIVO / INTERACTIVE MAP</div><div class="stats"><div class="stat"><b>2,847</b><span>locations</span></div><div class="stat"><b>436</b><span>vehicles</span></div><div class="stat"><b>∞</b><span>discoveries</span></div></div></div>
-</section>
+<!-- =========================
+     FEATURES
+========================= -->
 
-<section id="ai">
-  <h2>Stop searching.<br>Start asking.</h2>
-  <div class="ai">
-    <div class="chat">
-      <div class="bubble user">I have $500,000. What should I do first?</div>
-      <div class="bubble ai"><b>Your best move</b><br><br>1. Keep $200K in reserve<br>2. Prioritize your next unlock<br>3. Complete the highest-value activity<br>4. Target $1M<br><br><span style="color:#b8ff4a">[ Add strategy to my plan ]</span></div>
-    </div>
-    <div class="profile">
-      <div class="eyebrow">MY NEXIVO</div><h3 style="font-size:30px;margin:14px 0 0">Vice City — 38%</h3>
-      <div class="progress"><span></span></div>
-      <div class="profilegrid">
-        <div class="metric"><b>71</b><span>Locations</span></div><div class="metric"><b>8</b><span>Vehicles</span></div>
-        <div class="metric"><b>34</b><span>Missions</span></div><div class="metric"><b>2,450</b><span>XP</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="features">
 
-<section id="waitlist">
-  <div class="wait">
-    <div><div class="eyebrow">Early access</div><h2>Be ready<br>on day one.</h2><p style="color:#9aa1ad;max-width:560px">Join the early community building the ultimate GTA VI companion.</p></div>
-    <div><form class="form" onsubmit="event.preventDefault();fetch('https://fsjkrkpsitukyegvhuag.supabase.co/rest/v1/waitlist',{method:'POST',headers:{'Content-Type':'application/json','apikey':'sb_publishable_2r1MwycYAfDk_xah0Lv6rg_WqDlgHrg','Authorization':'Bearer sb_publishable_2r1MwycYAfDk_xah0Lv6rg_WqDlgHrg','Prefer':'return=minimal'},body:JSON.stringify({email:this.email.value})}).then(r=>{if(!r.ok)throw new Error();alert('Merci ! 🎉 Votre inscription est bien enregistrée. Nous vous tiendrons au courant dès que Nexivo sera prêt.');this.reset()}).catch(()=>alert('Une erreur est survenue.'))"><input type="email" name="email" placeholder="Your email" required><button class="btn accent" type="submit">Join the waitlist</button></form></div>
-  </div>
-</section>
+<div class="featurebar">
 
-<footer><div><b style="color:#fff">NEXIVO</b> · Your game. Your advantage.</div><div>Prototype V0.1</div></footer>
+<div class="feature">
+
+<div class="ico">
+⌖
 </div>
+
+<b data-i="map">
+CARTE INTERACTIVE
+</b>
+
+<p data-i="mapP">
+Explore chaque lieu, secret et point d’intérêt.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="ico">
+◈
+</div>
+
+<b data-i="ask">
+DEMANDE N’IMPORTE QUOI
+</b>
+
+<p data-i="askP">
+Assistant IA entraîné sur l’univers de GTA VI.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="ico">
+♛
+</div>
+
+<b data-i="master">
+MAÎTRISE TOUT
+</b>
+
+<p data-i="masterP">
+Guides, armes, véhicules, activités et bien plus.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="ico">
+ϟ
+</div>
+
+<b data-i="ahead">
+GARDE L’AVANTAGE
+</b>
+
+<p data-i="aheadP">
+Sois prêt. Sois efficace. Sois le premier.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     EXPLORE
+========================= -->
+
+<section id="explore" class="reveal">
+
+<div class="wrap">
+
+<div class="kicker">
+01 / EXPLORE
+</div>
+
+<h2 class="title" data-html="exploreH">
+Commence à Vice City.
+<br>
+Va partout.
+</h2>
+
+<p class="text" data-i="exploreP">
+Une interface vivante pour explorer Vice City,
+les îles, les quartiers, les zones sauvages et les secrets.
+</p>
+
+
+<div class="grid">
+
+
+<!-- MAP -->
+
+<article class="panel">
+
+<div class="kicker">
+01
+</div>
+
+<h3>
+⌖
+<span data-i="nav1">
+EXPLORER
+</span>
+</h3>
+
+<div class="sub">
+DISCOVER VICE CITY
+</div>
+
+<p>
+Chaque quartier.
+Chaque raccourci.
+Chaque secret.
+</p>
+
+<div class="art map">
+
+<div class="gridmap"></div>
+
+<div class="island"></div>
+
+<i class="pin p1"></i>
+<i class="pin p2"></i>
+<i class="pin p3"></i>
+<i class="pin p4"></i>
+
+</div>
+
+</article>
+
+
+<!-- ASK -->
+
+<article class="panel" id="ask">
+
+<div class="kicker">
+02
+</div>
+
+<h3>
+◈
+<span data-i="nav2">
+DEMANDER
+</span>
+</h3>
+
+<div class="sub">
+YOUR GTA VI ASSISTANT
+</div>
+
+<p data-i="askText">
+Pose une question et obtiens une réponse claire,
+rapide et utile.
+</p>
+
+<div class="art chat">
+
+<div class="bubble q">
+Where can I find the best cars in Vice City?
+</div>
+
+<div class="bubble a">
+Downtown garages and Ocean Drive are a good place to start.
+</div>
+
+<div class="bubble q">
+And the best way to make money early?
+</div>
+
+<div class="bubble a typing">
+•••
+</div>
+
+</div>
+
+</article>
+
+
+<!-- MASTER -->
+
+<article class="panel" id="master">
+
+<div class="kicker">
+03
+</div>
+
+<h3>
+♛
+<span data-i="nav3">
+MAÎTRISER
+</span>
+</h3>
+
+<div class="sub">
+PLAY LIKE A LEGEND
+</div>
+
+<p data-i="masterText">
+Missions, stratégies, armes, véhicules,
+business et découvertes.
+</p>
+
+<div class="art masterart">
+
+<div class="sil">
+♟
+</div>
+
+<div class="prog">
+<i></i>
+</div>
+
+</div>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     WEAPONS
+========================= -->
+
+<section class="reveal">
+
+<div class="wrap">
+
+<div class="weapons">
+
+<div class="kicker" data-i="weapons">
+ARMES
+</div>
+
+<h2 class="title" data-i="weaponsH">
+CHOISIS TON ARSENAL
+</h2>
+
+<div class="tabs" id="tabs"></div>
+
+
+<div class="weaponstage">
+
+
+<div class="gunbox">
+
+<div class="gunshape"></div>
+
+</div>
+
+
+<div>
+
+<div class="sub" id="wtype">
+SMG
+</div>
+
+<h3 class="weaponname" id="wname">
+VOLT-9
+</h3>
+
+<p class="text">
+Sélectionne une arme.
+Les caractéristiques et l’animation changent instantanément.
+</p>
+
+
+<div class="stats">
+
+
+<div class="stat">
+
+<span data-i="damage">
+DÉGÂTS
+</span>
+
+<div class="meter">
+<i id="md"></i>
+</div>
+
+<b id="vd">
+91
+</b>
+
+</div>
+
+
+<div class="stat">
+
+<span data-i="rate">
+CADENCE
+</span>
+
+<div class="meter">
+<i id="mr"></i>
+</div>
+
+<b id="vr">
+88
+</b>
+
+</div>
+
+
+<div class="stat">
+
+<span data-i="accuracy">
+PRÉCISION
+</span>
+
+<div class="meter">
+<i id="ma"></i>
+</div>
+
+<b id="va">
+72
+</b>
+
+</div>
+
+
+<div class="stat">
+
+<span data-i="range">
+PORTÉE
+</span>
+
+<div class="meter">
+<i id="mg"></i>
+</div>
+
+<b id="vg">
+61
+</b>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     WAITLIST
+========================= -->
+
+<section id="access" class="reveal">
+
+<div class="wrap">
+
+<div class="access">
+
+<div class="accessgrid">
+
+
+<div>
+
+<div class="kicker" data-i="accessK">
+04 / ACCÈS ANTICIPÉ
+</div>
+
+<h2 data-html="accessH">
+SOIS LE PREMIER.
+<br>
+SOIS PRÊT.
+</h2>
+
+<p class="text" data-i="accessP">
+Rejoins NEXIVO pour accéder aux outils,
+cartes et guides que nous construisons pour GTA VI.
+</p>
+
+</div>
+
+
+<div>
+
+<form class="form" id="waitlist">
+
+<input
+id="email"
+type="email"
+required
+placeholder="Entre ton adresse e-mail"
+>
+
+<button
+class="btn"
+id="submit"
+data-i="join"
+>
+REJOINDRE LA LISTE
+</button>
+
+</form>
+
+<div class="msg" id="msg"></div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="wrap" id="about">
+
+<div>
+
+<div class="flogo">
+NEXI<i>VO</i>
+</div>
+
+<br>
+
+<span data-i="footer">
+COMPAGNON GTA VI · NON AFFILIÉ À ROCKSTAR GAMES.
+</span>
+
+</div>
+
+<div class="footer-right">
+PRIVACY · TERMS · CONTACT · © 2026 NEXIVO
+</div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   LANGUES
+========================= */
+
+const T = {
+
+fr:{
+nav1:"EXPLORER",
+nav2:"DEMANDER",
+nav3:"MAÎTRISER",
+nav4:"À PROPOS",
+join:"REJOINDRE LA LISTE",
+
+eyebrow:"LE COMPAGNON ULTIME DE GTA VI · VICE CITY & AU-DELÀ",
+
+hero:"MAÎTRISE<br><span>GTA VI.</span>",
+
+copy:"Commence à Vice City. Explore au-delà. Découvre ce que les autres ratent, demande n’importe quoi et prends de l’avance.",
+
+early:"ACCÈS ANTICIPÉ →",
+watch:"VOIR LE TRAILER",
+
+map:"CARTE INTERACTIVE",
+mapP:"Explore chaque lieu, secret et point d’intérêt.",
+
+ask:"DEMANDE N’IMPORTE QUOI",
+askP:"Assistant IA entraîné sur l’univers de GTA VI.",
+
+master:"MAÎTRISE TOUT",
+masterP:"Guides, armes, véhicules, activités et bien plus.",
+
+ahead:"GARDE L’AVANTAGE",
+aheadP:"Sois prêt. Sois efficace. Sois le premier.",
+
+exploreH:"Commence à Vice City.<br>Va partout.",
+
+exploreP:"Une interface vivante pour explorer Vice City, les îles, les quartiers, les zones sauvages et les secrets.",
+
+askH:"Ton assistant GTA VI.",
+
+askText:"Pose une question et obtiens une réponse claire, rapide et utile.",
+
+masterH:"Joue comme une légende.",
+
+masterText:"Missions, stratégies, armes, véhicules, business et découvertes.",
+
+weapons:"ARMES",
+weaponsH:"CHOISIS TON ARSENAL",
+
+damage:"DÉGÂTS",
+rate:"CADENCE",
+accuracy:"PRÉCISION",
+range:"PORTÉE",
+
+accessK:"04 / ACCÈS ANTICIPÉ",
+
+accessH:"SOIS LE PREMIER.<br>SOIS PRÊT.",
+
+accessP:"Rejoins NEXIVO pour accéder aux outils, cartes et guides que nous construisons pour GTA VI.",
+
+email:"Entre ton adresse e-mail",
+
+success:"Merci ! 🎉 Ton inscription est confirmée. À bientôt dans Vice City.",
+
+error:"Une erreur est survenue. Réessaie.",
+
+footer:"COMPAGNON GTA VI · NON AFFILIÉ À ROCKSTAR GAMES."
+},
+
+en:{
+nav1:"EXPLORE",
+nav2:"ASK",
+nav3:"MASTER",
+nav4:"ABOUT",
+join:"JOIN WAITLIST",
+
+eyebrow:"THE ULTIMATE GTA VI COMPANION · VICE CITY & BEYOND",
+
+hero:"MASTER<br><span>GTA VI.</span>",
+
+copy:"Start in Vice City. Explore beyond. Discover what others miss, ask anything and build your advantage.",
+
+early:"GET EARLY ACCESS →",
+watch:"WATCH TRAILER",
+
+map:"INTERACTIVE MAP",
+mapP:"Explore every location, secret and point of interest.",
+
+ask:"ASK ANYTHING",
+askP:"AI assistant trained on the GTA VI universe.",
+
+master:"MASTER EVERYTHING",
+masterP:"Guides, weapons, vehicles, activities and more.",
+
+ahead:"STAY AHEAD",
+aheadP:"Be prepared. Be efficient. Be the first.",
+
+exploreH:"Start in Vice City.<br>Go everywhere.",
+
+exploreP:"A living interface for Vice City, islands, districts, wild country and hidden secrets.",
+
+askH:"Your GTA VI assistant.",
+
+askText:"Ask a question and get a clear, fast, useful answer.",
+
+masterH:"Play like a legend.",
+
+masterText:"Missions, strategies, weapons, vehicles, businesses and discoveries.",
+
+weapons:"WEAPONS",
+weaponsH:"CHOOSE YOUR ARSENAL",
+
+damage:"DAMAGE",
+rate:"FIRE RATE",
+accuracy:"ACCURACY",
+range:"RANGE",
+
+accessK:"04 / EARLY ACCESS",
+
+accessH:"BE FIRST.<br>BE READY.",
+
+accessP:"Join NEXIVO for the tools, maps and guides we're building for GTA VI.",
+
+email:"Enter your email",
+
+success:"Thanks! 🎉 Your signup is confirmed. See you in Vice City.",
+
+error:"Something went wrong. Please try again.",
+
+footer:"GTA VI COMPANION · NOT AFFILIATED WITH ROCKSTAR GAMES."
+},
+
+es:{
+nav1:"EXPLORAR",
+nav2:"PREGUNTAR",
+nav3:"DOMINAR",
+nav4:"ACERCA DE",
+join:"UNIRME A LA LISTA",
+
+eyebrow:"EL COMPAÑERO DEFINITIVO DE GTA VI · VICE CITY Y MÁS ALLÁ",
+
+hero:"DOMINA<br><span>GTA VI.</span>",
+
+copy:"Empieza en Vice City. Explora más allá. Descubre lo que otros pasan por alto y toma ventaja.",
+
+early:"ACCESO ANTICIPADO →",
+watch:"VER TRAILER",
+
+map:"MAPA INTERACTIVO",
+mapP:"Explora cada lugar, secreto y punto de interés.",
+
+ask:"PREGUNTA LO QUE QUIERAS",
+askP:"Asistente IA del universo de GTA VI.",
+
+master:"DOMÍNALO TODO",
+masterP:"Guías, armas, vehículos, actividades y mucho más.",
+
+ahead:"MANTÉN LA VENTAJA",
+aheadP:"Prepárate. Sé eficiente. Sé el primero.",
+
+exploreH:"Empieza en Vice City.<br>Ve a todas partes.",
+
+exploreP:"Una interfaz viva para explorar Vice City, islas, barrios, zonas salvajes y secretos.",
+
+askH:"Tu asistente de GTA VI.",
+
+askText:"Haz una pregunta y obtén una respuesta clara, rápida y útil.",
+
+masterH:"Juega como una leyenda.",
+
+masterText:"Misiones, estrategias, armas, vehículos, negocios y descubrimientos.",
+
+weapons:"ARMAS",
+weaponsH:"ELIGE TU ARSENAL",
+
+damage:"DAÑO",
+rate:"CADENCIA",
+accuracy:"PRECISIÓN",
+range:"ALCANCE",
+
+accessK:"04 / ACCESO ANTICIPADO",
+
+accessH:"SÉ EL PRIMERO.<br>ESTATE LISTO.",
+
+accessP:"Únete a NEXIVO para acceder a herramientas, mapas y guías para GTA VI.",
+
+email:"Introduce tu correo",
+
+success:"¡Gracias! 🎉 Tu registro está confirmado. Nos vemos en Vice City.",
+
+error:"Algo salió mal. Inténtalo de nuevo.",
+
+footer:"COMPANION GTA VI · NO AFILIADO A ROCKSTAR GAMES."
+},
+
+pt:{
+nav1:"EXPLORAR",
+nav2:"PERGUNTAR",
+nav3:"DOMINAR",
+nav4:"SOBRE",
+join:"ENTRAR NA LISTA",
+
+eyebrow:"O COMPANHEIRO DEFINITIVO DE GTA VI · VICE CITY E ALÉM",
+
+hero:"DOMINE<br><span>GTA VI.</span>",
+
+copy:"Comece em Vice City. Explore além. Descubra o que os outros não veem e fique à frente.",
+
+early:"ACESSO ANTECIPADO →",
+watch:"VER TRAILER",
+
+map:"MAPA INTERATIVO",
+mapP:"Explore todos os locais, segredos e pontos de interesse.",
+
+ask:"PERGUNTE QUALQUER COISA",
+askP:"Assistente IA do universo de GTA VI.",
+
+master:"DOMINE TUDO",
+masterP:"Guias, armas, veículos, atividades e muito mais.",
+
+ahead:"FIQUE À FRENTE",
+aheadP:"Esteja preparado. Seja eficiente. Seja o primeiro.",
+
+exploreH:"Comece em Vice City.<br>Vá para todo lugar.",
+
+exploreP:"Uma interface viva para Vice City, ilhas, bairros, áreas selvagens e segredos.",
+
+askH:"Seu assistente de GTA VI.",
+
+askText:"Faça uma pergunta e receba uma resposta clara, rápida e útil.",
+
+masterH:"Jogue como uma lenda.",
+
+masterText:"Missões, estratégias, armas, veículos, negócios e descobertas.",
+
+weapons:"ARMAS",
+weaponsH:"ESCOLHA SEU ARSENAL",
+
+damage:"DANO",
+rate:"CADÊNCIA",
+accuracy:"PRECISÃO",
+range:"ALCANCE",
+
+accessK:"04 / ACESSO ANTECIPADO",
+
+accessH:"SEJA O PRIMEIRO.<br>ESTEJA PRONTO.",
+
+accessP:"Entre no NEXIVO para acessar ferramentas, mapas e guias para GTA VI.",
+
+email:"Digite seu e-mail",
+
+success:"Obrigado! 🎉 Seu cadastro foi confirmado. Nos vemos em Vice City.",
+
+error:"Algo deu errado. Tente novamente.",
+
+footer:"COMPANHEIRO DE GTA VI · NÃO AFILIADO À ROCKSTAR GAMES."
+},
+
+de:{
+nav1:"ENTDECKEN",
+nav2:"FRAGEN",
+nav3:"MEISTERN",
+nav4:"ÜBER UNS",
+join:"WARTELISTE",
+
+eyebrow:"DER ULTIMATIVE GTA-VI-BEGLEITER · VICE CITY & DARÜBER HINAUS",
+
+hero:"MEISTERE<br><span>GTA VI.</span>",
+
+copy:"Starte in Vice City. Erkunde mehr. Entdecke, was andere übersehen, und verschaffe dir einen Vorsprung.",
+
+early:"FRÜHZUGANG →",
+watch:"TRAILER ANSEHEN",
+
+map:"INTERAKTIVE KARTE",
+mapP:"Erkunde jeden Ort, jedes Geheimnis und jeden wichtigen Punkt.",
+
+ask:"FRAG ALLES",
+askP:"KI-Assistent für das GTA-VI-Universum.",
+
+master:"MEISTERE ALLES",
+masterP:"Guides, Waffen, Fahrzeuge, Aktivitäten und mehr.",
+
+ahead:"BLEIB VORN",
+aheadP:"Sei vorbereitet. Sei effizient. Sei zuerst da.",
+
+exploreH:"Starte in Vice City.<br>Erkunde alles.",
+
+exploreP:"Eine lebendige Oberfläche für Vice City, Inseln, Bezirke, Wildnis und Geheimnisse.",
+
+askH:"Dein GTA-VI-Assistent.",
+
+askText:"Stelle eine Frage und erhalte eine klare, schnelle und nützliche Antwort.",
+
+masterH:"Spiele wie eine Legende.",
+
+masterText:"Missionen, Strategien, Waffen, Fahrzeuge, Geschäfte und Entdeckungen.",
+
+weapons:"WAFFEN",
+weaponsH:"WÄHLE DEIN ARSENAL",
+
+damage:"SCHADEN",
+rate:"FEUERRATE",
+accuracy:"GENAUIGKEIT",
+range:"REICHWEITE",
+
+accessK:"04 / FRÜHZUGANG",
+
+accessH:"SEI ZUERST DA.<br>SEI BEREIT.",
+
+accessP:"Schließe dich NEXIVO an und erhalte Werkzeuge, Karten und Guides für GTA VI.",
+
+email:"E-Mail eingeben",
+
+success:"Danke! 🎉 Deine Anmeldung ist bestätigt. Bis bald in Vice City.",
+
+error:"Etwas ist schiefgelaufen.",
+
+footer:"GTA-VI-BEGLEITER · NICHT MIT ROCKSTAR GAMES VERBUNDEN."
+},
+
+it:{
+nav1:"ESPLORA",
+nav2:"CHIEDI",
+nav3:"DOMINA",
+nav4:"CHI SIAMO",
+join:"UNISCITI ALLA LISTA",
+
+eyebrow:"IL COMPAGNO DEFINITIVO DI GTA VI · VICE CITY E OLTRE",
+
+hero:"DOMINA<br><span>GTA VI.</span>",
+
+copy:"Inizia da Vice City. Esplora oltre. Scopri ciò che gli altri si perdono e costruisci il tuo vantaggio.",
+
+early:"ACCESSO ANTICIPATO →",
+watch:"GUARDA IL TRAILER",
+
+map:"MAPPA INTERATTIVA",
+mapP:"Esplora ogni luogo, segreto e punto d'interesse.",
+
+ask:"CHIEDI QUALSIASI COSA",
+askP:"Assistente IA dell'universo di GTA VI.",
+
+master:"DOMINA TUTTO",
+masterP:"Guide, armi, veicoli, attività e molto altro.",
+
+ahead:"RESTA IN VANTAGGIO",
+aheadP:"Sii pronto. Sii efficiente. Sii il primo.",
+
+exploreH:"Inizia da Vice City.<br>Vai ovunque.",
+
+exploreP:"Un'interfaccia viva per Vice City, isole, quartieri, natura selvaggia e segreti.",
+
+askH:"Il tuo assistente GTA VI.",
+
+askText:"Fai una domanda e ricevi una risposta chiara, rapida e utile.",
+
+masterH:"Gioca come una leggenda.",
+
+masterText:"Missioni, strategie, armi, veicoli, attività e scoperte.",
+
+weapons:"ARMI",
+weaponsH:"SCEGLI IL TUO ARSENALE",
+
+damage:"DANNI",
+rate:"CADENZA",
+accuracy:"PRECISIONE",
+range:"PORTATA",
+
+accessK:"04 / ACCESSO ANTICIPATO",
+
+accessH:"SII IL PRIMO.<br>SII PRONTO.",
+
+accessP:"Unisciti a NEXIVO per gli strumenti, le mappe e le guide che stiamo creando per GTA VI.",
+
+email:"Inserisci la tua email",
+
+success:"Grazie! 🎉 La tua iscrizione è confermata. Ci vediamo a Vice City.",
+
+error:"Qualcosa è andato storto.",
+
+footer:"COMPAGNO DI GTA VI · NON AFFILIATO A ROCKSTAR GAMES."
+}
+
+};
+
+
+/* =========================
+   ARMES
+========================= */
+
+const W=[
+{
+name:"VOLT-9",
+type:"SMG",
+damage:91,
+rate:88,
+accuracy:72,
+range:61
+},
+{
+name:"MARAUDER",
+type:"SHOTGUN",
+damage:96,
+rate:54,
+accuracy:58,
+range:43
+},
+{
+name:"VIPER-X",
+type:"RIFLE",
+damage:86,
+rate:72,
+accuracy:94,
+range:92
+},
+{
+name:"SENTINEL",
+type:"PISTOL",
+damage:71,
+rate:91,
+accuracy:83,
+range:55
+}
+];
+
+
+/* =========================
+   LANGUE
+========================= */
+
+function setLanguage(l){
+
+const d=T[l]||T.fr;
+
+localStorage.setItem(
+"nexivo_lang",
+l
+);
+
+document.documentElement.lang=l;
+
+
+document
+.querySelectorAll("[data-i]")
+.forEach(e=>{
+
+if(d[e.dataset.i]!==undefined){
+
+e.textContent=d[e.dataset.i];
+
+}
+
+});
+
+
+document
+.querySelectorAll("[data-html]")
+.forEach(e=>{
+
+if(d[e.dataset.html]!==undefined){
+
+e.innerHTML=d[e.dataset.html];
+
+}
+
+});
+
+
+document.getElementById(
+"langMain"
+).textContent=
+l.toUpperCase()+" ▾";
+
+
+document.getElementById(
+"submit"
+).textContent=d.join;
+
+
+document.getElementById(
+"email"
+).placeholder=d.email;
+
+}
+
+
+const lm=
+document.getElementById("langMain");
+
+const menu=
+document.getElementById("langMenu");
+
+
+lm.onclick=e=>{
+
+e.stopPropagation();
+
+menu.classList.toggle("open");
+
+};
+
+
+document.onclick=()=>{
+
+menu.classList.remove("open");
+
+};
+
+
+document
+.querySelectorAll("[data-lang]")
+.forEach(b=>{
+
+b.onclick=()=>{
+
+setLanguage(
+b.dataset.lang
+);
+
+};
+
+});
+
+
+setLanguage(
+localStorage.getItem(
+"nexivo_lang"
+)||"fr"
+);
+
+
+/* =========================
+   ARMES INTERACTIVES
+========================= */
+
+const tabs=
+document.getElementById("tabs");
+
+
+tabs.innerHTML=
+W.map(
+(w,i)=>
+'<button class="tab '+
+(i===0?"active":"")+
+'" data-w="'+
+i+
+'">'+
+w.name+
+"</button>"
+).join("");
+
+
+tabs
+.querySelectorAll(".tab")
+.forEach(b=>{
+
+b.onclick=()=>{
+
+selectWeapon(
++b.dataset.w
+);
+
+};
+
+});
+
+
+function selectWeapon(i){
+
+const w=W[i];
+
+
+tabs
+.querySelectorAll(".tab")
+.forEach((b,j)=>{
+
+b.classList.toggle(
+"active",
+j===i
+);
+
+});
+
+
+document.getElementById(
+"wname"
+).textContent=w.name;
+
+
+document.getElementById(
+"wtype"
+).textContent=w.type;
+
+
+[
+["md","vd",w.damage],
+["mr","vr",w.rate],
+["ma","va",w.accuracy],
+["mg","vg",w.range]
+
+].forEach(x=>{
+
+document.getElementById(
+x[0]
+).style.width=
+x[2]+"%";
+
+
+document.getElementById(
+x[1]
+).textContent=
+x[2];
+
+});
+
+}
+
+
+selectWeapon(0);
+
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+const io=
+new IntersectionObserver(
+es=>{
+
+es.forEach(e=>{
+
+if(e.isIntersecting){
+
+e.target.classList.add(
+"show"
+);
+
+}
+
+});
+
+},
+{
+threshold:.12
+}
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(e=>{
+
+io.observe(e);
+
+});
+
+
+/* =========================
+   WAITLIST SUPABASE
+========================= */
+
+document
+.getElementById("waitlist")
+.onsubmit=
+async e=>{
+
+e.preventDefault();
+
+
+const email=
+document
+.getElementById("email")
+.value
+.trim();
+
+
+const msg=
+document.getElementById("msg");
+
+
+const btn=
+document.getElementById("submit");
+
+
+const l=
+localStorage.getItem(
+"nexivo_lang"
+)||"fr";
+
+
+if(!email)return;
+
+
+btn.disabled=true;
+
+btn.textContent="...";
+
+
+try{
+
+const r=
+await fetch(
+"https://fsjkrpsitukyegvhuag.supabase.co/rest/v1/waitlist",
+{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":
+"application/json",
+
+"apikey":
+"sb_publishable_2r1MwycYAfDk_xah0Lv6rg_WqDlgHrg",
+
+"Authorization":
+"Bearer sb_publishable_2r1MwycYAfDk_xah0Lv6rg_WqDlgHrg",
+
+"Prefer":
+"return=minimal"
+
+},
+
+body:
+JSON.stringify({
+email
+})
+
+});
+
+
+if(!r.ok){
+
+throw 0;
+
+}
+
+
+msg.textContent=
+T[l].success;
+
+
+e.target.reset();
+
+
+}
+catch(x){
+
+msg.textContent=
+T[l].error;
+
+}
+finally{
+
+btn.disabled=false;
+
+btn.textContent=
+T[l].join;
+
+}
+
+};
+
+</script>
+
 </body>
 </html>
